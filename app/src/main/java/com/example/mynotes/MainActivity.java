@@ -129,11 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 CustomAdapter adapter = new CustomAdapter(this, notes);
                 dataList.setAdapter(adapter);
 
-                dataList.setOnItemClickListener((parent, view, position, id) -> {
-                    int idNote = notes.get(position).getId();
-                    detalharNota(idNote);
-                });
-
                 dataList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -146,13 +141,17 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 deleteNote(idNote);
-                                listNotes(0);
                             }
                         });
                         dialog.setNegativeButton("Não", null);
                         dialog.show();
-                        return false;
+                        return true;
                     }
+                });
+
+                dataList.setOnItemClickListener((parent, view, position, id) -> {
+                    int idNote = notes.get(position).getId();
+                    detalharNota(idNote);
                 });
             }
         } catch (Exception e) {
@@ -172,6 +171,10 @@ public class MainActivity extends AppCompatActivity {
             database.execSQL("DELETE FROM notes WHERE id = " + idNote);
             database.close();
             Toast.makeText(this, "Nota excluída com sucesso", Toast.LENGTH_SHORT).show();
+            ArrayList<Note> emptyList = new ArrayList<>();
+            CustomAdapter emptyAdapter = new CustomAdapter(this, emptyList);
+            dataList.setAdapter(emptyAdapter);
+            listNotes(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

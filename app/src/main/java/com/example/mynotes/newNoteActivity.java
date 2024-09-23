@@ -36,6 +36,7 @@ public class newNoteActivity extends AppCompatActivity {
     private FloatingActionButton addPhotoButton;
     private ImageView notePhoto;
     private String imageString;
+    private Button btnBack;
 
     private SQLiteDatabase database;
 
@@ -50,7 +51,7 @@ public class newNoteActivity extends AppCompatActivity {
         saveNoteButton = findViewById(R.id.saveNoteButton);
         addPhotoButton = findViewById(R.id.addPhotoButton);
         notePhoto = findViewById(R.id.notePhoto);
-
+        btnBack = findViewById(R.id.btnBack);
         String[] options = {"Alta", "Média", "Baixa"};
 
         ArrayAdapter<String> adapters = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
@@ -99,6 +100,12 @@ public class newNoteActivity extends AppCompatActivity {
             selecionaFoto.create().show();
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
