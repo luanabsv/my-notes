@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_ordenar_chegada"
+        android:title="Ordenar por ordem chegada" />
+    <item
+        android:id="@+id/menu_ordenar_prioridade"
+        android:title="Ordenar por prioridade" />
+    <item
+        android:id="@+id/menu_fechar"
+        android:title="Fechar" />
+</menu>

@@ -55,6 +55,7 @@ public class newNoteActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapters = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapters);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -115,10 +116,11 @@ public class newNoteActivity extends AppCompatActivity {
                 stmt.bindString(2, texto);
                 stmt.bindLong(3, prioritySelected);
                 stmt.bindString(4, imageString);
-
                 stmt.executeInsert();
-                System.out.println(texto);
                 database.close();
+
+                setResult(RESULT_OK);
+                finish();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -127,7 +129,6 @@ public class newNoteActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent dados)
     {
-
         super.onActivityResult(requestCode, resultCode, dados);
         if(requestCode == 1) {
             try {

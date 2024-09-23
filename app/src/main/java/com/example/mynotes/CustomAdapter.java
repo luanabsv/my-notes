@@ -2,6 +2,7 @@ package com.example.mynotes;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +29,13 @@ public class CustomAdapter extends ArrayAdapter<Note> {
 
         TextView textView = convertView.findViewById(android.R.id.text1);
         textView.setText(notes.get(position).getTitle());
-
-        if (notes.get(position).getPriority() == 1) {
-            convertView.setBackgroundColor(Color.RED);
-        } else if(notes.get(position).getPriority() == 2) {
-            convertView.setBackgroundColor(Color.BLUE);
+        textView.setGravity(Gravity.CENTER);
+        if (notes.get(position).getPriority() == 0) {
+            convertView.setBackgroundColor(Color.argb(100, 255, 102, 102));
+        } else if(notes.get(position).getPriority() == 1) {
+            convertView.setBackgroundColor(Color.argb(100, 102, 153, 255));
         } else {
-            convertView.setBackgroundColor(Color.YELLOW);
+            convertView.setBackgroundColor(Color.argb(100, 255, 255, 153));
         }
 
         return convertView;

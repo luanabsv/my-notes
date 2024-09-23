@@ -72,17 +72,19 @@
 
     <ListView
         android:id="@+id/dataList"
-        android:layout_width="411dp"
-        android:layout_height="585dp"
+        android:layout_width="370dp"
+        android:layout_height="560dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
+        android:foregroundGravity="center"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.056">
 
     </ListView>
 
